@@ -2,5 +2,6 @@
 Tarea 2: Listas, expresiones regulares, pilas y colas en python
 Equipo : "Los papus pros insanos conductores de datos 67"
 Integrantes : 
-Ibarra De Santiago Estefany
-Samuel Emiliano Pérez Montiel
+Ibarra De Santiago Estefany,
+López Munive Jesús Emilio y 
+Pérez Montiel Samuel Emiliano. 
