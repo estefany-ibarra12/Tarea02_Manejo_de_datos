@@ -1,0 +1,28 @@
+#
+# Complejidad temporal: O(n)
+# Complejidad espacial: O(n)
+# Justificación: Se utiliza una expresión regular para extraer los numeradores y denominadores de la cadena linealmente, y se procesan en un ciclo de tamaño proporcional al número de fracciones.
+
+import math
+import re
+
+class Solution:
+    def fractionAddition(self, expression: str) -> str:
+        # Encontramos todas las fracciones con su signo respectivo (ej. "+1/2", "-1/3", etc.)
+        tokens = re.findall(r'[+-]?\d+/\d+', expression)
+        
+        num_acum = 0
+        den_acum = 1
+        
+        for token in tokens:
+            num, den = map(int, token.split('/'))
+            # Suma de fracciones: a/b + c/d = (a*d + c*b) / (b*d)
+            num_acum = num_acum * den + num * den_acum
+            den_acum = den_acum * den
+            
+            # Simplificar usando el máximo común divisor para evitar desbordamiento
+            mcd = math.gcd(abs(num_acum), den_acum)
+            num_acum //= mcd
+            den_acum //= mcd
+            
+        return f"{num_acum}/{den_acum}"
